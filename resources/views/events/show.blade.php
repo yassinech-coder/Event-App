@@ -24,6 +24,8 @@
                     <p>{{$event->location}}</p>
                     <h5>Date</h5>
                     <p>{{$event->date}}</p>
+                    <h5>Time</h5>
+                    <p>{{$event->time}}</p>
                     <h5>Price</h5>
                     <p>{{$event->price}}TND</p>
                  

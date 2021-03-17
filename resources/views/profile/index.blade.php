@@ -18,7 +18,7 @@
                      <div class="card-body">
                          <input type="file" class=" form-control " name="avatar" >
                             <br>
-                            <button class="btn btn-success ms float-right" type="submit" >Update</button>
+                            <button class="btn btn-dark ms float-right" type="submit" >Update</button>
                         </div>             
             </div>
             </form>
@@ -59,7 +59,7 @@
                        </div>
                        <div class="form-group">
 
-                        <button class="btn btn-success m float-right" type="submit" >Update</button>
+                        <button class="btn btn-dark m float-right" type="submit" >Update</button>
    
                        </div>
 

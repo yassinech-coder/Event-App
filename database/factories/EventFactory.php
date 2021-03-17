@@ -29,6 +29,7 @@ class EventFactory extends Factory
             'description' => $this->faker->paragraph(rand(2,10)),
             'location' => $this->faker->address,
             'date' => $this->faker->DateTime,
+            'time' => $this->faker->Time( 'H:i'),
             'price' => $this->faker->numberBetween($min = 10, $max = 100),
           
         ];

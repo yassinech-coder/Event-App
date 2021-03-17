@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('description');
             $table->string('location');
             $table->date('date');
+            $table->time('time');
             $table->integer('price');
             $table->timestamps();
         });
