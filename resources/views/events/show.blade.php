@@ -6,8 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ $event->title }}</div>
-                
-
+                <img src="{{asset('avatar/01.png')}}" style="width: 100%">
                 <div class="card-body">
                     <h3>Description</h3>
                     <p>{{$event->description}}</p>
@@ -16,7 +15,9 @@
             </div>
         </div>
         <div class="col-md-4">
+            <br><br>   
             <div class="card">
+                
                 <div class="card-header">{{ __('Info') }}</div>
 
                 <div class="card-body">

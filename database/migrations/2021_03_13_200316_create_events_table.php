@@ -23,6 +23,8 @@ class CreateEventsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->integer('price');
+            $table->string('picture');
+
             $table->timestamps();
         });
     }
