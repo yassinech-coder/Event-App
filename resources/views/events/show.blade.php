@@ -33,9 +33,20 @@
                 </div>
             </div>
             <br>
-            @if (Auth::check()&&Auth::user()->user_type='user')
-            <button class="btn btn-success btn-m" style="width: 100%">Participate</button>
+            @if (Auth::user()->user_type=='user')
+            @if (!$event->checkParticipation())
+            <form action="{{route('participate',[$event->id])}}" method="POST">@csrf
+            <button type="submit" class="btn btn-success btn-m" style="width: 100%">Participate</button>
+        </form>
+            
+        @else
+        <button type="submit" class="btn btn-success btn-m" style="width: 100%" disabled>Participated</button>
+        @endif
+            
             @endif
+            @if (Session::has('message'))
+            <div class="alert alert-success ms"> {{Session::get('message')}} </div>               
+            @endif  
         </div>
 
         </div>

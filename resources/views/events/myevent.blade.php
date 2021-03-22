@@ -26,10 +26,10 @@
                                 <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>
                                 <td>
                                 <a href="{{route('events.show', [$event->id, $event->description])}}">
-                            <button class="btn btn-outline-secondary btn-m"style="width: 80%">Check</button></a>
-                            <br> <a href="{{route('event.edit',[$event->id])}}"><button class="btn btn-outline-secondary btn-m" 
-                                style="width: 80%">Edit</button></a>
-                            <br> <button class="btn btn-danger btn-m"style="width: 80%" >Delete</button>
+                            <button class="btn btn-outline-secondary btn-m mb-1"style="width: 83%">Check</button></a>
+                            <br> <a href="{{route('event.edit',[$event->id])}}"><button class="btn btn-outline-secondary btn-m mb-1" 
+                                style="width: 83%">Edit</button></a>
+                            <br> <a href=""> <button class="btn btn-danger btn-m mb-1"style="width: 83%" >Delete</button></a>
 
                                 </td>
                             </tr>   

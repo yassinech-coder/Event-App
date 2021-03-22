@@ -5,11 +5,15 @@
     <div class="row">
         <div class="col-md-3">
 
-            @if (empty(Auth::user()->profile->avatar))
-            <img src="{{asset('avatar/02.jpg')}}"style="width: 100%">
-           @else
+             @if (empty(Auth::user()->profile->avatar))
+                 @if (empty(Auth::user()->avatar)) 
+            <img src="{{asset('avatar/02.jpg')}}"style="width: 100% ; border-radius:50%;margin-bottom:5px;">
+                 @else 
+            <img src="{{Auth::user()->avatar}}"style="width: 100% ; border-radius:50%; margin-bottom:5px;">
+            @endif
+             @else
                  <img src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}"
-                 style="width: 100%">             
+                 style="width: 100% ; border-radius:50%;margin-bottom:5px;">             
             @endif
           
             <form action="{{route('avatar')}}" method="POST" enctype="multipart/form-data">@csrf
@@ -59,7 +63,7 @@
                        </div>
                        <div class="form-group">
 
-                        <button class="btn btn-dark m float-right" type="submit" >Update</button>
+                        <button class="btn btn-dark m float-right" type="submit" >Update</button><br>
    
                        </div>
 
@@ -78,9 +82,22 @@
 
                   <p>Name : {{Auth::user()->name}}</p>
                   <p>Email : {{Auth::user()->email}}</p>
-                  <p>Address : {{Auth::user()->profile->address}}</p>
-                  <p>Phone Number : {{Auth::user()->profile->phone_number}}</p>
-                  <p>Gender : {{Auth::user()->profile->gender}}</p>
+                  @if (empty(Auth::user()->profile->address))
+                  <p>Address : </p>
+                  @else
+                 <p>Address : {{Auth::user()->profile->address}}</p>
+                  @endif
+                  @if (empty(Auth::user()->profile->phone_number))
+                  <p>Phone Number : </p>
+                  @else
+                 <p>Phone Number : {{Auth::user()->profile->phone_number}}</p>
+                  @endif
+                  @if (empty(Auth::user()->profile->gender))
+                  <p>Gender : </p>
+                  @else
+                 <p>Gender : {{Auth::user()->profile->gender}}</p>
+                  @endif   
+                  
 
 
                   </div>
@@ -90,7 +107,11 @@
                     <div class="card-header">More Info</div>
                       <div class="card-body">
      
-                        <p>{{Auth::user()->profile->details}}</p>
+                        @if (empty(Auth::user()->profile->details))
+                        <p>  </p>
+                        @else
+                       <p> {{Auth::user()->profile->details}}</p>
+                        @endif 
 
                       </div>
                 </div>

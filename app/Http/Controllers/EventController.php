@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
+
 use App\Http\Requests\EventCreateRequest;
 use App\Models\Event;
+use App\Http\Controllers\Auth ;
 use Illuminate\Support\Facades\Storage;
 use App\Http\UploadedFile;
-use App\Http\Controllers\Auth ;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+      public function __construct()
+      {
+      $this->middleware('organizer',['except'=>array('index','show','participate')]);
+      }
     public function index()
     {
          $events=Event::all()->take(5);        
@@ -83,6 +88,20 @@ class EventController extends Controller
         $event->update($request->all());
         return redirect()->back()->with('message','Event Successfully Updated!');
        } 
+
+       public function participate(Request $request,$id)
+       {
+            $eventId = Event::find($id);
+            $eventId->users()->attach(auth()->user()->id);
+            return redirect()->back()->with('message','Participated Successfully!');
+
+       }
+
+       public function participant()
+       {
+           $participants = Event::has('users')->where('user_id',auth()->user()->id)->get();
+           return view('events.participants')->with(compact('participants'));
+       }
 
 }
 

@@ -64,11 +64,11 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                                     
                                     <a class="dropdown-item" href="{{route('profile')}}">{{ __('Profile') }}</a> 
-
+                                        @if(Auth::user()->user_type=='organizer')
                                     <a class="dropdown-item" href="{{route('my.events')}}">{{ __('My Events') }}</a> 
-
+                                         @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

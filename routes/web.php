@@ -27,8 +27,8 @@ Route::post('/events/{id}/edit' , 'App\Http\Controllers\EventController@update')
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/events/{id}/{event}' , 'App\Http\Controllers\EventController@show')->name('events.show');
-Route::get('user/profile', 'App\Http\Controllers\UserController@index')->name('profile');
-Route::get('organizer/profile', 'App\Http\Controllers\UserController@index')->name('profile');
+Route::get('profile', 'App\Http\Controllers\UserController@index')->name('profile');
+
 
 Route::post('user/profile/create','App\Http\Controllers\UserController@store')->name('profile.create');
 Route::post('organizer/profile/create','App\Http\Controllers\UserController@store')->name('profile.create');
@@ -43,3 +43,6 @@ Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::
 
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class,'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class,'handleFacebookCallback']);
+
+Route::post('participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
+Route::get('events/participations', 'App\Http\Controllers\EventController@participant');
