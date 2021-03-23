@@ -26,12 +26,20 @@
                     <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>
                     <td>
                         <a href="{{route('events.show', [$event->id, $event->description])}}">
-                        <button class="btn btn-success btn-m">Check</button></a>
+                        <button class="btn btn-success btn-m float-right">Check</button></a>
                     </td>
                 </tr>
                 @endforeach
+                   
             </tbody>
+        </table>
+        </div>
+           
+                <div>
+                <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width: 100%">All Events</button></a>
+            </div>
+           
         
-    </div>
+    
 </div>
 @endsection

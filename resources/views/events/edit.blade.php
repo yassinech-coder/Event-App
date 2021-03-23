@@ -72,7 +72,7 @@
                     </div> 
             <div class="form-group"> 
             
-                    <form action="{{route('picture')}}" method="POST" enctype="multipart/form-data">@csrf
+                    <form action="{{route('my.picture')}}" method="POST" enctype="multipart/form-data">@csrf
                     <div class="card">
                       <div class="card-header"> Add Event Picture </div>
                              <div class="card-body">

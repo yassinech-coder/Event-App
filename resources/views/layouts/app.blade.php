@@ -69,6 +69,11 @@
                                         @if(Auth::user()->user_type=='organizer')
                                     <a class="dropdown-item" href="{{route('my.events')}}">{{ __('My Events') }}</a> 
                                          @endif
+
+                                         @if(Auth::user()->user_type=='organizer')
+                                    <a class="dropdown-item" href="{{route('participant')}}">{{ __('Participants') }}</a>
+                                    @endif
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -15,11 +15,11 @@ class EventController extends Controller
 {
       public function __construct()
       {
-      $this->middleware('organizer',['except'=>array('index','show','participate')]);
+      $this->middleware('organizer',['except'=>array('index','show','participate','allEvents')]);
       }
     public function index()
     {
-         $events=Event::all()->take(5);        
+         $events=Event::latest()->limit(5)->get();        
          return view('welcome')->with(compact('events'));
     }
 
@@ -103,5 +103,25 @@ class EventController extends Controller
            return view('events.participants')->with(compact('participants'));
        }
 
+       public function allEvents(Request $request)
+       {
+          $keyword = $request->get('title');
+          $category = $request->get('category_id');
+          $location = $request->get('location');
+          $date = $request->get('date');
+
+          if($keyword||$category||$location||$date)
+          {
+              $events = Event::where('title',$keyword)
+              ->orWhere('category_id',$category)
+              ->orWhere('location',$location)
+              ->orWhere('date',$date)
+              ->simplePaginate(5);
+              return view ('events.allevents')->with(compact('events'));
+           }else{
+          $events = Event::latest()->simplePaginate(5);
+          return view ('events.allevents')->with(compact('events'));
+       }
+     }
 }
 

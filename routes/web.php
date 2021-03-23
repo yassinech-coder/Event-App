@@ -18,7 +18,7 @@ Route::get('/events/create', 'App\Http\Controllers\EventController@create')->nam
 Route::post('/events/create', 'App\Http\Controllers\EventController@store')->name('event.store');
 Route::get('/events/my-event','App\Http\Controllers\EventController@myevent')->name('my.events');
 
-Route::post('/events/picture','App\Http\Controllers\EventController@mypicture')->name('picture');
+Route::post('/events/picture','App\Http\Controllers\EventController@mypicture')->name('my.picture');
 
 Auth::routes();
 
@@ -45,4 +45,5 @@ Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class,'
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class,'handleFacebookCallback']);
 
 Route::post('participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
-Route::get('events/participations', 'App\Http\Controllers\EventController@participant');
+Route::get('events/participations', 'App\Http\Controllers\EventController@participant')->name('participant');
+Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
