@@ -98,21 +98,21 @@ class EventController extends Controller
        }
 
        public function participant()
-       {
+       {   
            $participants = Event::has('users')->where('user_id',auth()->user()->id)->get();
            return view('events.participants')->with(compact('participants'));
        }
 
        public function allEvents(Request $request)
        {
-          $keyword = $request->get('title');
+          $title = $request->get('title');
           $category = $request->get('category_id');
           $location = $request->get('location');
           $date = $request->get('date');
 
-          if($keyword||$category||$location||$date)
+          if($title||$category||$location||$date)
           {
-              $events = Event::where('title',$keyword)
+              $events = Event::where('title',$title)
               ->orWhere('category_id',$category)
               ->orWhere('location',$location)
               ->orWhere('date',$date)
@@ -121,7 +121,15 @@ class EventController extends Controller
            }else{
           $events = Event::latest()->simplePaginate(5);
           return view ('events.allevents')->with(compact('events'));
-       }
-     }
+           }
+ 
+           }
+     public function delete($id)
+     {
+      $event = Event::findOrFail($id);
+      $event->delete();
+      return redirect()->back()->with('message','Event Deleted!');
+     } 
+
 }
 

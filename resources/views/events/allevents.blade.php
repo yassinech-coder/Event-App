@@ -8,7 +8,7 @@
             <thead>
                 <form action="{{route('allevents')}}" method="GET">
                     <th>  
-                        keyword
+                        title
                         <input type="text" name="title" class="form-control">
                     </th>
                 <th>  

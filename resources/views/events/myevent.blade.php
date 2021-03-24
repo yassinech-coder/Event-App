@@ -9,6 +9,9 @@
                
                 <div class="card-body">
                     <table class="table">
+                        @if (Session::has('message'))
+                        <div class="alert alert-success ms"> {{Session::get('message')}} </div>               
+                        @endif 
                         <thead>
                             <th><a href="{{route('event.create')}}">
                                 <button class="btn btn-secondary"> Post Event </button></a></th>
@@ -29,8 +32,8 @@
                             <button class="btn btn-outline-secondary btn-m mb-1"style="width: 90%">Check</button></a>
                             <br> <a href="{{route('event.edit',[$event->id])}}"><button class="btn btn-outline-secondary btn-m mb-1" 
                                 style="width: 90%">Edit</button></a>
-                            <br> <a href=""> <button class="btn btn-danger btn-m mb-1"style="width: 90%" >Delete</button></a>
-
+                            <br> <a href="{{route('event.delete',[$event->id])}}"> 
+                                <button class="btn btn-danger btn-m mb-1"style="width: 90%" >Delete</button></a>
                                 </td>
                             </tr>   
                             @endforeach

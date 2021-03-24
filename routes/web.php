@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/events/{id}/edit' , 'App\Http\Controllers\EventController@edit')->name('event.edit');
 Route::post('/events/{id}/edit' , 'App\Http\Controllers\EventController@update')->name('event.update');
+Route::get('/events/{id}/delete' , 'App\Http\Controllers\EventController@delete')->name('event.delete');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/events/{id}/{event}' , 'App\Http\Controllers\EventController@show')->name('events.show');
@@ -47,3 +48,4 @@ Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController
 Route::post('participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
 Route::get('events/participations', 'App\Http\Controllers\EventController@participant')->name('participant');
 Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
+Route::get('/participants/{event_id}/{user_id}/delete' , 'App\Http\Controllers\UserController@delete')->name('participant.delete');

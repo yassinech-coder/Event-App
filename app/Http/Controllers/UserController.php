@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Event;
+use Illuminate\Support\Facades\DB;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -52,4 +53,15 @@ class UserController extends Controller
 
        }
     }
+  
+             public function delete($event_id,$user_id )
+              {
+                DB::table('event_user')->where('event_id',$event_id)
+                ->where('user_id',$user_id)->delete();
+
+              return redirect()->back()->with('message','Participant Deleted!');
+              } 
+
+   
+
 }
