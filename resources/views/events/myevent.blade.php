@@ -23,7 +23,12 @@
                         <tbody>
                             @foreach ($event as $event)
                             <tr>
-                                <td><img src="{{asset('avatar/01.png')}}" width="200"></td>
+                                <td>@if (empty($event->picture))
+                                    <img src="{{asset('avatar/01.png')}}" width="200">
+                                   @else
+                                <img src="{{'storage/articles/'.$event->picture}}"
+                                 width="200">             
+                                    @endif</td>
                                 <td>Title: {{$event->title}} </td>
                                 <td><i class="fas fa-map-marker-alt"></i> Location : {{$event->location}}  </td>
                                 <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>

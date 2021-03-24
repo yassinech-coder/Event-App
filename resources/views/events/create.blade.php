@@ -11,7 +11,7 @@
                 @if (Session::has('message'))
             <div class="alert alert-success ms"> {{Session::get('message')}} </div>               
             @endif  
-                <form action="{{route('event.store')}}" method="POST">@csrf
+                <form action="{{route('event.store')}}" method="POST" enctype="multipart/form-data">@csrf
 
             <div class="form-group">
               <label for="tirle">Title</label>
@@ -71,7 +71,6 @@
                     </div> 
             <div class="form-group"> 
             
-                    <form action="{{route('my.picture')}}" method="POST" enctype="multipart/form-data">@csrf
                     <div class="card">
                       <div class="card-header"> Add Event Picture </div>
                              <div class="card-body">
@@ -81,7 +80,7 @@
 
                                 </div>             
                     </div>
-                    </form>
+                    
                     
                 </div>    
         
@@ -89,7 +88,7 @@
                 
             
             </div>
-                  
+        </form>
 
         </div>
     </div>

@@ -42,11 +42,17 @@ class EventController extends Controller
 
    
     public function store(EventCreateRequest $request)
-    {
+    {Log::info('pp');
          $events = new event();
-     $user_id = auth()->user()->id ;
-
-
+      $user_id = auth()->user()->id ;
+    
+      if($request->hasfile('picture')){
+          $file = $request->file('picture');
+          $ext = $file->getClientOriginalExtension();
+          $filename = time().'.'.$ext;
+          $file->storeAs('articles',$filename, 'public');
+          Log::info( $filename);
+        }  
        Event::create([
           'user_id'=> $user_id ,
           'title'=>request('title'),
@@ -56,25 +62,13 @@ class EventController extends Controller
           'time'=>request('time'),
           'price'=>request('price') ,
           'description'=>request('description'),
-          'picture'=>request('picture'),
+          'picture'=>$filename,
           ]); 
-          Log::info('$picture');
+          Log::info('ppp');
         return redirect()->back()->with('message','Event Created Successfully !');
     }
    
-    public function mypicture(Request $request) 
-    {
-     
-     $user_id = auth()->user()->id ;    
-
-      if($request->hasfile('picture')){
-         $picture = $request->file('picture')->store('public/pictures');
-        Event::create([
-         'picture'=>$picture
-          ]);
-         
-        }
-    }
+   
 
        public function edit($id)
        {

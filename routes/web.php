@@ -18,7 +18,6 @@ Route::get('/events/create', 'App\Http\Controllers\EventController@create')->nam
 Route::post('/events/create', 'App\Http\Controllers\EventController@store')->name('event.store');
 Route::get('/events/my-event','App\Http\Controllers\EventController@myevent')->name('my.events');
 
-Route::post('/events/picture','App\Http\Controllers\EventController@mypicture')->name('my.picture');
 
 Auth::routes();
 

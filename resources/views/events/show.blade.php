@@ -6,7 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><h3><strong>Title : {{ $event->title }} </strong></h3> </div>
+                @if (empty($event->picture))
                 <img src="{{asset('avatar/01.png')}}" style="width: 100%">
+                @else
+            <img src="{{'storage/articles/'.$event->picture}}"
+            style="width: 100%">             
+                @endif
                 <div class="card-body">
                     <h3><strong>Description</strong></h3>
                     <p>{{$event->description}}</p>
