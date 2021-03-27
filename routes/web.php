@@ -44,7 +44,7 @@ Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class,'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class,'handleFacebookCallback']);
 
-Route::post('participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
+Route::post('/participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
 Route::get('events/participations', 'App\Http\Controllers\EventController@participant')->name('participant');
 Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
 Route::get('/participants/{event_id}/{user_id}/delete' , 'App\Http\Controllers\UserController@delete')->name('participant.delete');

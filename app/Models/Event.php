@@ -13,7 +13,7 @@ class Event extends Model
 
     public function getRouteKeyName()
     {
-        return'description';
+        return'title';
     }
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();

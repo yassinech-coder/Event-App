@@ -70,24 +70,10 @@
                 <label for="description">Description</label>
                     <textarea class="form-control"  name="description">{{ $event->description }}</textarea>
                     </div> 
-            <div class="form-group"> 
-            
-                   
-                    <div class="card">
-                      <div class="card-header"> Add Event Picture </div>
-                             <div class="card-body">
-                                 <input type="file" class=" form-control " name="picture" >
-                                 <br>
-                                 <button type="submit" class="btn btn-success float-right " style="width: 15%"  > Update </button>
+                    <br>
+               <button type="submit" class="btn btn-success float-right " style="width: 15%"  > Update </button>
 
-                                </div>             
-                    </div>
-              
-                    
-                </div>    
-        
-   
-                
+            
                 </form>
             </div>
                   

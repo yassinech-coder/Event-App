@@ -42,7 +42,7 @@
                     <td>@if (empty($event->picture))
                         <img src="{{asset('avatar/01.png')}}" width="200">
                        @else
-                             <img src="{{'storage/articles/'.$event->picture}}"
+                             <img src="{{'/storage/articles/'.$event->picture}}"
                              width="200">             
                         @endif</td>
                     <td>Title: {{$event->title}} </td>

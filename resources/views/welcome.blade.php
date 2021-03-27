@@ -25,8 +25,8 @@
                     <td><i class="fas fa-map-marker-alt"></i> Location : {{$event->location}}  </td>
                     <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>
                     <td>
-                        <a href="{{route('events.show', [$event->id, $event->description])}}">
-                        <button class="btn btn-success btn-m float-right">Check</button></a>
+                        <a href="{{route('events.show', [$event->id, $event->title])}}">
+                        <button class="btn btn-secondary btn-m float-right">Check</button></a>
                     </td>
                 </tr>
                 @endforeach
@@ -36,7 +36,7 @@
         </div>
            
                 <div>
-                <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width: 100%">All Events</button></a>
+                <a href="{{route('allevents')}}"><button class="btn btn-outline-secondary btn-lg" style="width: 100%">All Events</button></a>
             </div>
            
         

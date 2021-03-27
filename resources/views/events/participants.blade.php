@@ -7,7 +7,7 @@
             <div class="card ">
                 @foreach ($participants as $participant)
                 <div class="card-header" style="background:rgb(211, 207, 207)">
-                      <a href="{{route('events.show', [$participant->id, $participant->description])}}" style="color: rgb(0, 0, 0); font-weight:bold" >
+                      <a href="{{route('events.show', [$participant->id, $participant->title])}}" style="color: rgb(0, 0, 0); font-weight:bold" >
                         Event : {{$participant->title}} </a></div>
 
                 <div class="card-body">

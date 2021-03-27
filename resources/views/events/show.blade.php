@@ -9,7 +9,7 @@
                 @if (empty($event->picture))
                 <img src="{{asset('avatar/01.png')}}" style="width: 100%">
                 @else
-            <img src="{{'storage/articles/'.$event->picture}}"
+            <img src="{{'/storage/articles/'.$event->picture}}"
             style="width: 100%">             
                 @endif
                 <div class="card-body">
@@ -38,26 +38,25 @@
                 </div>
             </div>
             <br>
+            
             @if (empty(Auth::user()->user_type))
             <button type="submit" class="btn btn-success btn-m" style="width: 100%" disabled>Participate</button>
 
-          @else  @if (Auth::user()->user_type=='user')
-              @if (!$event->checkParticipation())
-            <form action="{{route('participate',[$event->id])}}" method="POST">@csrf
-            <button type="submit" class="btn btn-success btn-m" style="width: 100%">Participate</button>
-        </form>
-            
-              @else
-        <button type="submit" class="btn btn-success btn-m" style="width: 100%" disabled>Participated</button>
-              @endif
-            
-            @endif
-            @if (Session::has('message'))
-            <div class="alert alert-success ms"> {{Session::get('message')}} </div>               
-            @endif   @endif
-        </div>
+          @else @if (Auth::user()->user_type=='user')
+                    @if (!$event->checkParticipation())                        
+                       <participate-component eventid="{{$event->id}}"></participate-component>
+                       @else <button class="alert alert-success btn-m" style="width: 100%" disabled> Participated Successfully! </button>
 
+                    @endif
+                @endif
+            @endif
+            
+        
+         
+            </div>
         </div>
     </div>
+    
 </div>
+
 @endsection

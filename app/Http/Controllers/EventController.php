@@ -42,7 +42,7 @@ class EventController extends Controller
 
    
     public function store(EventCreateRequest $request)
-    {Log::info('pp');
+    {
          $events = new event();
       $user_id = auth()->user()->id ;
     
@@ -51,7 +51,7 @@ class EventController extends Controller
           $ext = $file->getClientOriginalExtension();
           $filename = time().'.'.$ext;
           $file->storeAs('articles',$filename, 'public');
-          Log::info( $filename);
+          
         }  
        Event::create([
           'user_id'=> $user_id ,
@@ -79,7 +79,8 @@ class EventController extends Controller
        public function update(Request $request,$id)
        {
         $event = Event::findOrFail($id);
-        $event->update($request->all());
+        $event->update($request->except('picture'));
+       
         return redirect()->back()->with('message','Event Successfully Updated!');
        } 
 
