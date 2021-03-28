@@ -6,7 +6,7 @@
         <h1>All Events</h1>
         <table class="table">
             <thead>
-                <form action="{{route('allevents')}}" method="GET">
+                <form action="{{('allevents')}}" method="GET">
                     <th>  
                         title
                         <input type="text" name="title" class="form-control">
@@ -49,7 +49,7 @@
                     <td><i class="fas fa-map-marker-alt"></i> Location : {{$event->location}}  </td>
                     <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>
                     <td>
-                        <a href="{{route('events.show', [$event->id, $event->description])}}">
+                        <a href="{{route('events.show', [$event->id, $event->title])}}">
                         <button class="btn btn-success btn-m">Check</button></a>
                     </td>
                 </tr>

@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('participate-component', require('./components/ParticipateComponent.vue').default);
+Vue.component('favourite-component', require('./components/FavouriteComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,10 +29,11 @@ Vue.component('participate-component', require('./components/ParticipateComponen
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import Vue from 'vue'
-import qs from "qs";
-
 import ParticipateComponent from './components/ParticipateComponent'
+import FavouriteComponent from './components/FavouriteComponent'
 const app = new Vue({
     el: '#app',
-    components:{ParticipateComponent},
+    components:{ParticipateComponent,FavouriteComponent},
+    
+
 });

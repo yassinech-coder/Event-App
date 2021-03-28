@@ -48,6 +48,7 @@
                        @else <button class="alert alert-success btn-m" style="width: 100%" disabled> Participated Successfully! </button>
 
                     @endif
+            <favourite-component eventid="{{$event->id}}":fav = "{{$event->checkFavourite()?'true':'false'}}"></favourite-component>
                 @endif
             @endif
             

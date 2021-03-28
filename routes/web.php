@@ -46,5 +46,9 @@ Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController
 
 Route::post('/participations/{id}','App\Http\Controllers\EventController@participate')->name('participate');
 Route::get('events/participations', 'App\Http\Controllers\EventController@participant')->name('participant');
-Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
 Route::get('/participants/{event_id}/{user_id}/delete' , 'App\Http\Controllers\UserController@delete')->name('participant.delete');
+
+Route::post('/add/{id}', 'App\Http\Controllers\FavouriteController@addEvent');
+Route::post('/remove/{id}', 'App\Http\Controllers\FavouriteController@removeEvent');
+Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
+    

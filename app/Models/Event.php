@@ -23,4 +23,13 @@ class Event extends Model
     {
         return DB::table('event_user')->where('user_id',auth()->user()->id)->where('event_id',$this->id)->exists();
     }
+
+    public function favourites(){
+        return $this->belongsToMany(Event::class,'favourites','event_id','user_id')->withTimestamps();
+    }
+  
+    public function checkFavourite()
+    {
+        return DB::table('favourites')->where('user_id',auth()->user()->id)->where('event_id',$this->id)->exists();
+    }
 }

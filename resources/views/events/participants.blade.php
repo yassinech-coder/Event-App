@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card ">
+            <div class="card "style="margin-bottom: 7px">
                 @foreach ($participants as $participant)
                 <div class="card-header" style="background:rgb(211, 207, 207)">
                       <a href="{{route('events.show', [$participant->id, $participant->title])}}" style="color: rgb(0, 0, 0); font-weight:bold" >
-                        Event : {{$participant->title}} </a></div>
+                        <i class="fas fa-external-link-alt "style="font-size: 75%"></i>  Event : {{$participant->title}} </a></div>
 
                 <div class="card-body">
                     @foreach ($participant->users as $user)

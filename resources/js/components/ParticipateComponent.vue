@@ -2,7 +2,7 @@
     <div>
         <form @submit="formSubmit">
         
-<button v-if="show" type="submit" class="btn btn-success btn-m" style="width: 100%">Participate</button>   
+<button v-if="show" type="submit" class="btn btn-success btn-m" style="width: 100%;margin:5px">Participate</button>   
 <button v-else type="submit" class="alert alert-success btn-m" style="width: 100%" disabled> Participated Successfully! </button>
         </form>
     </div>
@@ -11,7 +11,7 @@
 <script>
 
     export default {
-        props:["eventid"],
+        props:['eventid'],
         mounted() {
             console.log('Component mounted.')
         },

@@ -33,7 +33,7 @@
                                 <td><i class="fas fa-map-marker-alt"></i> Location : {{$event->location}}  </td>
                                 <td><i class="far fa-calendar-alt"></i> Date : {{$event->date}}</td>
                                 <td>
-                                <a href="{{route('events.show', [$event->id, $event->description])}}">
+                                <a href="{{route('events.show', [$event->id, $event->title])}}">
                             <button class="btn btn-outline-secondary btn-m mb-1"style="width: 90%">Check</button></a>
                             <br> <a href="{{route('event.edit',[$event->id])}}"><button class="btn btn-outline-secondary btn-m mb-1" 
                                 style="width: 90%">Edit</button></a>
