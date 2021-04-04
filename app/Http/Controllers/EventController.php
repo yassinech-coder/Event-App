@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\UploadedFile;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class EventController extends Controller
 {
       public function __construct()
       {
-      $this->middleware('organizer',['except'=>array('index','show','participate','allEvents')]);
+      $this->middleware('organizer',['except'=>array('index','show','participate','allEvents','searchEvents')]);
       }
     public function index()
     {
-         $events=Event::latest()->limit(5)->get();        
-         return view('welcome')->with(compact('events'));
+         $events=Event::latest()->limit(5)->get();  
+         $categories = Category::with('events')->get();
+         return view('welcome')->with(compact('events','categories'));
+         
     }
 
     public function show($id, Event $event)
@@ -101,10 +103,11 @@ class EventController extends Controller
        public function allEvents(Request $request)
        {
           $title = $request->get('title');
-          $category = $request->get('category_id');
+          $category = $request->input('category_id');
           $location = $request->get('location');
           $date = $request->get('date');
-
+          Log::info('msg');
+        Log::info($category);
           if($title||$category||$location||$date)
           {
               $events = Event::where('title',$title)
@@ -112,6 +115,8 @@ class EventController extends Controller
               ->orWhere('location',$location)
               ->orWhere('date',$date)
               ->simplePaginate(5);
+              Log::info($events);
+
               return view ('events.allevents')->with(compact('events'));
            }else{
           $events = Event::latest()->simplePaginate(5);
@@ -125,6 +130,17 @@ class EventController extends Controller
       $event->delete();
       return redirect()->back()->with('message','Event Deleted!');
      } 
+     public function searchEvents(Request $request)
+     {
+          $keyword = $request->get('keyword');
+          Log::info($keyword);
+          $users = Event::where('title','LIKE',"%{$keyword}%")
+                  ->orWhere('location','LIKE',"%{$keyword}%")
+                  ->limit(5)->get();
+          return response()->json($users);
+  
+    
+     }
 
 }
 

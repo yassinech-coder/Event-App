@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('participate-component', require('./components/ParticipateComponent.vue').default);
 Vue.component('favourite-component', require('./components/FavouriteComponent.vue').default);
+Vue.component('search-component', require('./components/SearchComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,9 +32,10 @@ Vue.component('favourite-component', require('./components/FavouriteComponent.vu
 import Vue from 'vue'
 import ParticipateComponent from './components/ParticipateComponent'
 import FavouriteComponent from './components/FavouriteComponent'
+import SearchComponent from './components/SearchComponent'
 const app = new Vue({
     el: '#app',
-    components:{ParticipateComponent,FavouriteComponent},
+    components:{ParticipateComponent,FavouriteComponent,SearchComponent},
     
 
 });

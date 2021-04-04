@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
         'Speaker session ',
         'Networking sessions',
         'Conferences',
-        'Seminar or half-day event',
         'Workshops and classes',
         'Sponsorships',
         'Trade shows and expos',

@@ -3,6 +3,7 @@
 <head>
     <script src="https://kit.fontawesome.com/ca6e0e7eec.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
