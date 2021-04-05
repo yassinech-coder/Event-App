@@ -52,4 +52,7 @@ Route::post('/add/{id}', 'App\Http\Controllers\FavouriteController@addEvent');
 Route::post('/remove/{id}', 'App\Http\Controllers\FavouriteController@removeEvent');
 Route::get('events/allevents', 'App\Http\Controllers\EventController@allEvents')->name('allevents');
 Route::get('events/search', 'App\Http\Controllers\EventController@searchEvents');
+
+Route::get('/category/{id}', 'App\Http\Controllers\CategoryController@index')->name('category.index');
+
     

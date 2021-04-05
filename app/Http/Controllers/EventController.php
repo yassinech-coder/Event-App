@@ -102,6 +102,17 @@ class EventController extends Controller
 
        public function allEvents(Request $request)
        {
+           $title = $request->get('title');
+           $location = $request->get('location');
+
+          if($title && $location){
+               $events = Event::where('title','LIKE','%'.$title.'%')
+               ->orWhere('location','LIKE','%'.$location.'%')
+               ->paginate(5);
+               return view ('events.allevents')->with(compact('events'));
+
+          }
+             
           $title = $request->get('title');
           $category = $request->input('category_id');
           $location = $request->get('location');
@@ -133,7 +144,6 @@ class EventController extends Controller
      public function searchEvents(Request $request)
      {
           $keyword = $request->get('keyword');
-          Log::info($keyword);
           $users = Event::where('title','LIKE',"%{$keyword}%")
                   ->orWhere('location','LIKE',"%{$keyword}%")
                   ->limit(5)->get();

@@ -58,9 +58,10 @@
           <div class="col-md-6 text-center" data-aos="fade">
             <h1 class="h3 mb-0">Participate in our Events </h1>
             <p class="h3 text-white mb-5">Or Make yours</p>
+            @if (!Auth::check())
             <p><a href="/register" class="btn btn-outline-warning py-3 px-4">For User</a>
                  <a href="{{route('org.register')}}" class="btn btn-outline-warning py-3 px-4">For Organizer</a></p>
-            
+            @endif
           </div>
         </div>
       </div>

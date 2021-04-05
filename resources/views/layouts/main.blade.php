@@ -14,7 +14,7 @@
     @include('../parts.header')
 </head>
 <body>
-    @include('../parts.nav')
+@include('../parts.nav')
 @yield('content')
 
     @include('../parts.footer')

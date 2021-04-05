@@ -25,9 +25,28 @@
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      @if (!Auth::check())
                       <li><a href="/register">User Register</a></li>
                       <li> <a href="{{route('org.register')}}">Organizer Register</a></li>
                       <li>
+                        @else
+                
+                        <li> 
+                        <a class="dropdown-item" href="{{route('profile')}}">{{ Auth::user()->name }}</a> </li>
+                        <li>
+                          @if(Auth::user()->user_type=='user')
+                          <a class="dropdown-item" href="{{route('home')}}">{{ __('Favourites') }}</a>
+                          @endif</li>
+                        <li> @if(Auth::user()->user_type=='organizer')
+                              <a class="dropdown-item" href="{{route('my.events')}}">{{ __('My Events') }}</a> 
+                                    @endif</li>
+
+                                    <li> @if(Auth::user()->user_type=='organizer')
+                              <a class="dropdown-item" href="{{route('participant')}}">{{ __('Participants') }}</a>
+                              @endif</li>
+
+                     
+                        @endif
                         @if (!Auth::check())
                         <button type="button" class="btn btn-dark text-white py-2 px-3 rounded" 
                         data-toggle="modal" data-target="#exampleModal"> Login</button>

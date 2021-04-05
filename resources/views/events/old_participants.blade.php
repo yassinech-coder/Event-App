@@ -1,12 +1,9 @@
-@extends('layouts.main')
+@extends('layouts.app')
+
 @section('content')
-
-
-<div class="site-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-11 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-        <br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
             <div class="card "style="margin-bottom: 7px">
                 @foreach ($participants as $participant)
                 <div class="card-header" style="background:rgb(211, 207, 207)">
@@ -45,12 +42,7 @@
                 </div>
                 @endforeach
             </div>
-            </div>
-        
-       </div>
-
+        </div>
     </div>
 </div>
-
 @endsection
-

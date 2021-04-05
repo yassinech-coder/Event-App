@@ -8,41 +8,10 @@
         <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
         <table class="table">
             <br><br>
-            <h2 class="mb-6 h3">All Events</h2>
+            <h2 class="mb-6 h3">{{$categoryName->name}}</h2>
             <thead>
-                <form action="{{('allevents')}}" method="GET" >
-                    
-                    <th>  
-                        title
-                        <input style="height: 40px" type="text" name="title" class="form-control ">
-                    </th>
-                <th>  
-                     category 
-                     <select style="height: 40px" name="category_id" class="form-control">
-                         <option value=""></option>
-                        @foreach (App\Models\Category::all() as $cat)
-                        <option value="{{$cat->id}}">{{$cat->name}}</option>
-                            
-                        @endforeach
-                    </select>
-                </th>
-                
-                <th>   
-                     location 
-                    <input style="height: 40px" type="text" name="location" class="form-control">
-                </th>
-                <th>   
-                     date 
-                     <input style="height: 40px" type="date" class="form-control" 
-                     name="date">
-                </th>
-                <th>
-                    <button type="submit" class="btn btn-outline-dark">Search</button>
-            </th>
-        </form>
             </thead>
             <tbody>
-                @if(count($events)>0)
                 @foreach ($events as $event)
                 <tr>
                     <td>@if (empty($event->picture))
@@ -60,9 +29,7 @@
                     </td>
                 </tr>
                 @endforeach
-                   @else 
-                   <td><h2>No Event Found ....</h2></td>
-                   @endif
+                   
             </tbody>
         </table>
         <br>
