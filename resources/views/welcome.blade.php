@@ -12,8 +12,9 @@
   
   @include('parts.nav')
   @include('parts.searchbg')
+  <a id="search_category">
   @include('parts.category')
-   
+</a>
     <div class="site-section bg-light">
       <div class="container">
         <div class="row justify-content-center">

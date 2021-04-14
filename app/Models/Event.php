@@ -32,4 +32,9 @@ class Event extends Model
     {
         return DB::table('favourites')->where('user_id',auth()->user()->id)->where('event_id',$this->id)->exists();
     }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable')->latest();
+    }
 }

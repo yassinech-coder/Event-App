@@ -32,11 +32,37 @@
                            
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->profile->address}}</td>
-                            <td>{{$user->profile->phone_number}}</td>
+                            <td>{{$user->profile->address}}</td> 
+                            <td>{{$user->profile->phone_number}} </td>
                    
-                            <td> <a href="{{route('participant.delete',[$participant->id,$user->id])}}">
-                              <i class="far fa-trash-alt" style="font-size: 125%"></i></a></td>
+                            <td> 
+                              <i class="far fa-trash-alt" style="font-size: 125%" data-toggle="modal" data-target="#exampleModal{{$participant->id,$user->id}}"></i>
+                              
+                               <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{$participant->id,$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog " role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Remove participant</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                Do you want to remove?
+                                                </div>
+                                                <form action="{{route('participant.delete',[$participant->id,$user->id])}}">
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Remove</button>
+                                        </form>
+                                        
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                            
+                            </td>
   
                           </tr>
                         </tbody>

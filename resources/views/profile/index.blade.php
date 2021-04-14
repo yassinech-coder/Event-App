@@ -13,13 +13,13 @@
                     <br>
                      @if (empty(Auth::user()->profile->avatar))
                          @if (empty(Auth::user()->avatar)) 
-                    <img src="{{asset('avatar/02.jpg')}}"style="width: 100% ; border-radius:50%;margin-bottom:5px;">
+                    <img src="{{asset('avatar/02.jpg')}}"style="width: 75% ; border-radius:50%;margin-left:25px;margin-bottom:5px;">
                          @else 
-                    <img src="{{Auth::user()->avatar}}"style="width: 100% ; border-radius:50%; margin-bottom:5px;">
+                    <img src="{{Auth::user()->avatar}}"style="width: 75% ; border-radius:50%;margin-left:25px; margin-bottom:5px;">
                     @endif
                      @else
                          <img src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}"
-                         style="width: 100% ; border-radius:50%;margin-bottom:5px;">             
+                         style="width: 75% ; border-radius:50%;margin-bottom:5px;margin-left:25px;">             
                     @endif
                   
                     <form action="{{route('avatar')}}" method="POST" enctype="multipart/form-data">@csrf

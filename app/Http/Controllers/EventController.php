@@ -8,7 +8,7 @@ use App\Models\Event;
 use App\Http\Controllers\Auth ;
 use Illuminate\Support\Facades\Storage;
 use App\Http\UploadedFile;
-use Illuminate\Contracts\Queue\Job;
+
 use Illuminate\Http\Request;
 use App\Models\Category;
 class EventController extends Controller
@@ -27,7 +27,26 @@ class EventController extends Controller
 
     public function show($id, Event $event)
     {   
-              return view('events.show')->with(compact('event'));
+          $data = [];
+          $eventBasedOnLocation = Event:: latest()->where('location', 'LIKE', '%' .$event->location. '%')
+          ->whereDate('date', '>',date('Y-m-d')) 
+          ->where('id', '!=',$event->id) 
+          ->limit(3)
+          ->get();
+          array_push($data, $eventBasedOnLocation);
+          
+               $eventBasedOnCategories = Event::latest()
+               ->where('category_id', $event->category_id)
+               ->whereDate('date', '>',date('Y-m-d'))
+               ->where('id', '!=',$event->id)
+               ->limit(3)
+               ->get();
+               array_push($data,$eventBasedOnCategories);
+               $collection = collect($data);
+               $unique = $collection->unique('id');
+               $eventRecommendations = $unique->values()->first();
+
+              return view('events.show')->with(compact('event','eventRecommendations'));
     }
 
     public function myevent()

@@ -26,7 +26,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p class="small">or browse by category: <a href="#" class="category">Category</a>
+              <p class="small">or browse by category: <a href="#search_category" class="category">Category</a>
             </div>
           </div>
           

@@ -55,4 +55,6 @@ Route::get('events/search', 'App\Http\Controllers\EventController@searchEvents')
 
 Route::get('/category/{id}', 'App\Http\Controllers\CategoryController@index')->name('category.index');
 
-    
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->middleware('admin')->name('dash.index');
+   
+Route::post('/comments/{event}', 'App\Http\Controllers\CommentController@store')->name('comments.store');

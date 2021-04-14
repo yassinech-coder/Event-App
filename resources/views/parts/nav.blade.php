@@ -34,6 +34,10 @@
                         <li> 
                         <a class="dropdown-item" href="{{route('profile')}}">{{ Auth::user()->name }}</a> </li>
                         <li>
+                          @if(Auth::user()->name=='admin')
+                          <a class="dropdown-item" href="{{route('dash.index')}}">{{ __('Dashboard') }}</a>
+                          @endif</li>
+                          <li>
                           @if(Auth::user()->user_type=='user')
                           <a class="dropdown-item" href="{{route('home')}}">{{ __('Favourites') }}</a>
                           @endif</li>
@@ -89,8 +93,8 @@
                 @csrf
                 <div class="form-group row">
                     <div class="col-md-8 offset-md-3">
-                    <a href="{{route('login.google')}}" class ="btn btn-danger btn-block"><i class="fab fa-google"></i> Login with Google </a>
-                    <a href="{{route('login.facebook')}}" class="btn btn-info btn-block"><i class="bi bi-facebook"></i>
+                    <a href="{{route('login.google')}}" class ="btn btn-danger btn-block"><span class="icon-google"></span> Login with Google </a>
+                    <a href="{{route('login.facebook')}}" class="btn btn-info btn-block"><span class="icon-facebook"></span>
                         Login with Facebook</a>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
+use App\models\Role;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -52,6 +53,10 @@ class User extends Authenticatable
     }
     public function favourites(){
         return $this->belongsToMany(Event::class,'favourites','user_id','event_id')->withTimestamps();
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
    
 }
