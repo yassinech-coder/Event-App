@@ -3,10 +3,6 @@
    <div class="album text-muted">
      <div class="container">
        <div class="row">
-         <h1>Employer Registration</h1>   
-         
-
-    
 
     <div class="site-section bg-light col-md-12">
       <div class="container">
@@ -23,7 +19,7 @@
                   <h3 class="h5 text-black mb-3">Dashboard List</h3>
                   <a href="">Statistic</a>
                   <br><a href="">Events</a>
-                  <br><a href="">Users</a>
+                  <br><a href="{{route('dash.show')}}">Users</a>
                 </div>
               </div>
 

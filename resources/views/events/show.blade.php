@@ -88,7 +88,7 @@
                      </div>
                 </div>
                 @empty
-                            <div class="alert alert-info">No Comments!</div>
+                            <div class="alert alert-success col-md-3"><center> No Comments! </center></div>
                  @endforelse
                 
 

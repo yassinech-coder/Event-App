@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Admin;
+use App\Http\Middleware\User;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use App\Models\Profile;
@@ -62,6 +64,20 @@ class UserController extends Controller
   }
   public function getuser(Request $request)
   {
-     $users =  DB::table('users')->get();
+    $name = $request->get('name');
+    $user_type = $request->input('user_type');
+
+          if($name || $user_type){
+               $users = DB::table('users')->where('name',$name)
+               ->orWhere('user_type',$user_type)
+               ->paginate(5);
+               return view ('admin.show')->with(compact('users'));
+
+          }
+
+
+     $users =  DB::table('users')->where('name','!=','admin')->get();
+     return view('admin.show')->with(compact('users'));
+
   }
 }

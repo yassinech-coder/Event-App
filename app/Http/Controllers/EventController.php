@@ -136,8 +136,7 @@ class EventController extends Controller
           $category = $request->input('category_id');
           $location = $request->get('location');
           $date = $request->get('date');
-          Log::info('msg');
-        Log::info($category);
+
           if($title||$category||$location||$date)
           {
               $events = Event::where('title',$title)
