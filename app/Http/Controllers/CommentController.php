@@ -24,4 +24,19 @@ class CommentController extends Controller
         $event->comments()->save($comment);
         return redirect()->route('events.show', [$event->id, $event->title]);
     }
+
+    public function storeCommentReply(Comment $comment)
+    {
+        request()->validate([
+            'replyComment' => 'required|min:3'
+        ]);
+
+        $commentReply = new Comment();
+        $commentReply->content = request('replyComment');
+        $commentReply->user_id = auth()->user()->id;
+
+        $comment->comments()->save($commentReply);
+
+        return redirect()->back();
+    }
 }

@@ -1,4 +1,15 @@
 @extends('layouts.main')
+
+@section('extra-js')
+    <script>
+        function toggleReplyComment(id)
+        {
+            let element = document.getElementById('replyComment-' + id);
+            element.classList.toggle('d-none');
+        }
+    </script>
+@endsection
+
 @section('content')
    <div class="album text-muted">
      <div class="container">
@@ -76,7 +87,7 @@
                 <hr>
                 <h3 class="h5 text-black mb-3">Comments</h3>
                 @forelse ($event->comments as $comment)
-                <div class="card mb-2">
+                <div class="card mb-2" style="border-radius: 10px">
                    <div class="card-body">
                     <strong>{{ $comment->user->name }}</strong><br>
                         {{ $comment->content }}
@@ -87,26 +98,57 @@
                         </div>
                      </div>
                 </div>
+                
+                @auth
+                <button class="btn btn-secondary mb-3" onclick="toggleReplyComment({{ $comment->id }})">Reply</button>
+            <form action="{{ route('comments.storeReply', $comment) }}" method="POST" class="mb-3 ml-5 d-none" id="replyComment-{{ $comment->id }}">
+                @csrf
+        <table>  <div class="form-group">
+                   <tr> <label for="replyComment"> Reply here!</label></tr>
+                   <tr> <th style="width: 3%"></th>
+                   <th style="width: 85%" > <textarea name="replyComment" style="border-radius: 5px; width:100%" class="form-control @error('replyComment') is-invalid @enderror" id="replyComment" rows="2"></textarea>
+                    @error('replyComment')
+                        <div class="invalid-feedback">{{ $errors->first('replyComment') }}</div>
+                    @enderror
+                </div>  </th>
+                <th style="width: 2%"></th>
+                <th style="width: 20%"> <button type="submit" class="btn btn-secondary">Reply</button></th>
+              </tr> </table>
+            </form>
+            @endauth
+            @foreach ($comment->comments as $replyComment)
+            <div class="card mb-3 ml-5" style="border-radius: 10px; height:110px;">
+                   <div class="card-body">
+                    <strong>{{ $replyComment->user->name }}</strong><br>
+                        {{ $replyComment->content }}
+                        <div class=" d-flex justify-content-between align-items-center">
+                          <br>
+                        <small class="badge badge-secondary"> Posted {{ $replyComment->created_at->format('d/m/Y') }}</small>
+                        
+                        </div>
+                     </div>
+                </div>
+            @endforeach
                 @empty
-                            <div class="alert alert-success col-md-3"><center> No Comments! </center></div>
+                            <div class="alert alert-success">No Comments!</div>
                  @endforelse
                 
-
+@auth
                 <form action="{{ route('comments.store', $event) }}" method="POST" class="mt-3">
                 @csrf
                 <div class="form-group">
                                 <label for="content">Your Comment</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="2"></textarea>
+                                <textarea style="border-radius: 5px" class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="2"></textarea>
                                 @error('content')
                                     <div class="invalid-feedback">{{ $errors->first('content') }}</div>
                                 @enderror
                             </div>
-                 @if (Auth::check())
+                 
                  <button type="submit" class="btn btn-secondary  float-right"> Post </button><br><br>
-                 @else 
-                 <button type="submit" class="btn btn-secondary  float-right" disabled> Post </button><br><br>
-                 @endif
+                
+                 
                 </form>
+                @endauth
 
               </div>
               <div class="col-md-4">

@@ -60,3 +60,5 @@ Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->midd
 Route::post('/comments/{event}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
 
 Route::get('/dashboard/users', 'App\Http\Controllers\UserController@getuser')->name('dash.show');
+
+Route::post('/commentReply/{comment}', 'App\Http\Controllers\CommentController@storeCommentReply')->name('comments.storeReply');

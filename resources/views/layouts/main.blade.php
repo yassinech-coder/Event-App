@@ -9,7 +9,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/ca6e0e7eec.js" crossorigin="anonymous"></script>
-    
+    @yield('extra-js')
+
     <title></title>
     @include('../parts.header')
 </head>
