@@ -67,17 +67,15 @@ class UserController extends Controller
     $name = $request->get('name');
     $user_type = $request->input('user_type');
 
-          if($name || $user_type){
-               $users = DB::table('users')->where('name',$name)
-               ->orWhere('user_type',$user_type)
-               ->paginate(5);
-               return view ('admin.show')->with(compact('users'));
+    if ($name || $user_type) {
+      $users = DB::table('users')->where('name', $name)
+        ->orWhere('user_type', $user_type)
+        ->paginate(5);
+      return view('admin.show')->with(compact('users'));
+    }
 
-          }
 
-
-     $users =  DB::table('users')->where('name','!=','admin')->get();
-     return view('admin.show')->with(compact('users'));
-
+    $users =  DB::table('users')->where('name', '!=', 'admin')->get();
+    return view('admin.show')->with(compact('users'));
   }
 }

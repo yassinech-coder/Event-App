@@ -25,6 +25,6 @@ class OrganizerRegisterController extends Controller
          'dob'=>request('dob') ,
 
         ]); 
-        return redirect()->to('login');
+        return redirect()->to('/');
     }
 }
