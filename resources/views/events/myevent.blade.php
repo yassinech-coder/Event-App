@@ -40,11 +40,10 @@
                                                 class="btn btn-secondary btn-m mb-1" style="width: 90%">Edit</button></a>
                                         <br>
                                         <button class="btn btn-danger btn-m mb-1"
-                                            onclick="handleDelete({{ $event->id }})" style="width: 90%">Delete</button>
-                                    </td>
-                                </tr>
+                                            onclick="handleDelete('{{$event->id}}')" style="width: 90%">Delete</button>
+                                    
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="deleteModal{{$event->id}}" tabindex="-1" role="dialog"
                                     aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <form action="{{ route('event.delete', [$event->id]) }}">
@@ -68,7 +67,8 @@
                                         </form>
                                     </div>
                                 </div>
-
+                            </td>
+                        </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -87,10 +87,9 @@
 
 @section('scripts')
     <script>
-        function handleDelete() {
+        function handleDelete(event_id) {
 
-            $('#deleteModal').appendTo('body').modal('show')
-
+            $(`#deleteModal${event_id}`).appendTo('body').modal('show')
         }
 
     </script>
