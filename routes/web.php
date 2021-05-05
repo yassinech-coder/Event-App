@@ -62,3 +62,4 @@ Route::post('/comments/{event}', 'App\Http\Controllers\CommentController@store')
 Route::get('/dashboard/users', 'App\Http\Controllers\UserController@getuser')->name('dash.show');
 
 Route::post('/commentReply/{comment}', 'App\Http\Controllers\CommentController@storeCommentReply')->name('comments.storeReply');
+Route::post('/event/mail','App\Http\Controllers\EmailController@send')->name('mail');
