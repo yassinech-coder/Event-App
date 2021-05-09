@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         $event->comments()->save($comment);
 
-        auth()->user()->notify(new NewCommentPosted($event, auth()->user()));
+        $event->user->notify(new NewCommentPosted($event, auth()->user()));
         return redirect()->route('events.show', [$event->id, $event->title]);
     }
 

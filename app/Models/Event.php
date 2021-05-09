@@ -20,7 +20,9 @@ class Event extends Model
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();
     }
-  
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     public function checkParticipation()
     {
         return DB::table('event_user')->where('user_id',auth()->user()->id)->where('event_id',$this->id)->exists();

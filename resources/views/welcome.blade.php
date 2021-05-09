@@ -12,9 +12,7 @@
   
   @include('parts.nav')
   @include('parts.searchbg')
-  <a id="search_category">
-  @include('parts.category')
-</a>
+  
     <div class="site-section bg-light">
       <div class="container">
         <div class="row justify-content-center">
@@ -52,6 +50,9 @@
         </div>
       </div>
     </div>
+    <a id="search_category">
+      @include('parts.category')
+  </a>
 
     <div class="site-blocks-cover overlay inner-page" style="background-image: url('external/images/hero_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
@@ -60,7 +61,7 @@
             <h1 class="h3 mb-0">Participate in our Events </h1>
             <p class="h3 text-white mb-5">Or Make yours</p>
             @if (!Auth::check())
-            <p><a href="/register" class="btn btn-outline-warning py-3 px-4">For User</a>
+            <p><a href="{{route('user.register')}}" class="btn btn-outline-warning py-3 px-4">For User</a>
                  <a href="{{route('org.register')}}" class="btn btn-outline-warning py-3 px-4">For Organizer</a></p>
             @endif
           </div>

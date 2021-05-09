@@ -50,7 +50,7 @@ class NewCommentPosted extends Notification
         return [
             'eventTitle' => $this->event->title,
             'eventId' => $this->event->id,
-            'username' => $this->user->name
+            'name' => $this->user->name
         ];
     }
 }

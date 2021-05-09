@@ -44,30 +44,12 @@
                     @if (empty($event->picture))
                         <img src="{{ asset('avatar/01.png') }}" style="width: 100%">
                     @else
-                        <img src="{{ '/storage/articles/' . $event->picture }}" style="width: 100%"> <br><br>
+                        <img src="{{env('APP_STORAGE')}}{{ '/storage/articles/' . $event->picture }}" style="width: 100%"> <br><br>
                     @endif
                 </div>
                 <div class="col-md-4">
 
-                    <div class="card" style=" background: #71e798d0;
-                      color: white;
-                      padding: 2em;
-                      border-radius: 30px;
-                      width: 90%;
-                      height: 85%;
-                      max-width: 420px;
-                      margin: 1em;">
-                        <div class="weather loading">
-                            <h2 class="city">Weather in {{ $event->location }}</h2>
-                            <h1 class="temp">21°C</h1>
-                            <div class="flex">
-                                <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
-                                <div class="description">Cloudy</div>
-                            </div>
-                            <div class="humidity">Humidity: 60%</div>
-                            <div class="wind">Wind speed: 6.2 km/h</div>
-                        </div>
-                    </div>
+                    <meteo-component location="{{ $event->location }}"></meteo-component>
 
                 </div>
                 <div class="col-md-8">
@@ -132,12 +114,8 @@
                                             <input type="email" name="your_email" class="form-control" required="">
                                         </div>
                                         <div class="form-goup">
-                                            <label>Person name *</label>
-                                            <input type="text" name="friend_name" class="form-control" required="">
-                                        </div>
-                                        <div class="form-goup">
                                             <label>Person email *</label>
-                                            <input type="email" name="friend_email" class="form-control" required="">
+                                            <input type="text" name="friend_email" class="form-control" required="">
                                         </div>
 
                                     </div>

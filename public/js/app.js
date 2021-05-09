@@ -1931,6 +1931,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["location"],
+  data: function data() {
+    return {
+      data: {
+        condition: {
+          text: null
+        },
+        temp_c: null,
+        humidity: null,
+        wind_kph: null
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    console.log("Component mounted.");
+    axios.get("http://api.weatherapi.com/v1/forecast.json?key=b46134e867a34ae883d163825210905&q=".concat(location, "&days=1&aqi=no&alerts=no")).then(function (response) {
+      return _this.data = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ParticipateComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ParticipateComponent.vue?vue&type=script&lang=js& ***!
@@ -2048,6 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ParticipateComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ParticipateComponent */ "./resources/js/components/ParticipateComponent.vue");
 /* harmony import */ var _components_FavouriteComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/FavouriteComponent */ "./resources/js/components/FavouriteComponent.vue");
 /* harmony import */ var _components_SearchComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SearchComponent */ "./resources/js/components/SearchComponent.vue");
+/* harmony import */ var _components_MeteoComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/MeteoComponent */ "./resources/js/components/MeteoComponent.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2070,6 +2140,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('example-component', __webpac
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('participate-component', __webpack_require__(/*! ./components/ParticipateComponent.vue */ "./resources/js/components/ParticipateComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('favourite-component', __webpack_require__(/*! ./components/FavouriteComponent.vue */ "./resources/js/components/FavouriteComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('search-component', __webpack_require__(/*! ./components/SearchComponent.vue */ "./resources/js/components/SearchComponent.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0__.default.component('meteo-component', __webpack_require__(/*! ./components/MeteoComponent.vue */ "./resources/js/components/MeteoComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -2080,12 +2151,14 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('search-component', __webpack
 
 
 
+
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   components: {
     ParticipateComponent: _components_ParticipateComponent__WEBPACK_IMPORTED_MODULE_1__.default,
     FavouriteComponent: _components_FavouriteComponent__WEBPACK_IMPORTED_MODULE_2__.default,
-    SearchComponent: _components_SearchComponent__WEBPACK_IMPORTED_MODULE_3__.default
+    SearchComponent: _components_SearchComponent__WEBPACK_IMPORTED_MODULE_3__.default,
+    MeteoComponent: _components_MeteoComponent__WEBPACK_IMPORTED_MODULE_4__.default
   }
 });
 
@@ -37596,6 +37669,45 @@ component.options.__file = "resources/js/components/FavouriteComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/MeteoComponent.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/MeteoComponent.vue ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MeteoComponent.vue?vue&type=template&id=4c28a07c& */ "./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c&");
+/* harmony import */ var _MeteoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeteoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _MeteoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MeteoComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ParticipateComponent.vue":
 /*!**********************************************************!*\
   !*** ./resources/js/components/ParticipateComponent.vue ***!
@@ -37706,6 +37818,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeteoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MeteoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeteoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/ParticipateComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/ParticipateComponent.vue?vue&type=script&lang=js& ***!
@@ -37768,6 +37896,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FavouriteComponent_vue_vue_type_template_id_df8c2c02___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FavouriteComponent_vue_vue_type_template_id_df8c2c02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FavouriteComponent.vue?vue&type=template&id=df8c2c02& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FavouriteComponent.vue?vue&type=template&id=df8c2c02&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeteoComponent_vue_vue_type_template_id_4c28a07c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MeteoComponent.vue?vue&type=template&id=4c28a07c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c&");
 
 
 /***/ }),
@@ -37907,6 +38052,78 @@ var render = function() {
           ]
         )
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MeteoComponent.vue?vue&type=template&id=4c28a07c& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "card",
+      staticStyle: {
+        background: "#71e798d0",
+        color: "white",
+        padding: "2em",
+        "border-radius": "30px",
+        width: "90%",
+        height: "85%",
+        "max-width": "420px",
+        margin: "1em"
+      }
+    },
+    [
+      _c("div", { staticClass: "weather loading" }, [
+        _c("br"),
+        _vm._v(" "),
+        _c("h2", { staticClass: "city" }, [
+          _vm._v("Weather in " + _vm._s(_vm.location))
+        ]),
+        _vm._v(" "),
+        _c("h1", { staticClass: "temp" }, [
+          _vm._v(_vm._s(_vm.data.current.temp_c) + " °C")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "https://openweathermap.org/img/wn/04n.png", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "description" }, [
+            _vm._v(_vm._s(_vm.data.current.condition.text))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "humidity" }, [
+          _vm._v("Humidity: " + _vm._s(_vm.data.current.humidity))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "wind" }, [
+          _vm._v("Wind speed: " + _vm._s(_vm.data.current.wind_kph) + "km/h")
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -9,7 +9,7 @@ use App\Models\Event;
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\UploadedFile;
-
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -46,6 +46,8 @@ class EventController extends Controller
           $collection = collect($data);
           $unique = $collection->unique('id');
           $eventRecommendations = $unique->values()->first();
+
+          
 
           return view('events.show')->with(compact('event', 'eventRecommendations'));
      }
@@ -162,5 +164,11 @@ class EventController extends Controller
                ->orWhere('location', 'LIKE', "%{$keyword}%")
                ->limit(5)->get();
           return response()->json($users);
+     }
+
+     public function showFromNotification($id, Event $event, DatabaseNotification $notification)
+     {      
+          $notification->markAsRead();
+         return $this->show($id,$event);      
      }
 }

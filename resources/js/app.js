@@ -23,6 +23,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('participate-component', require('./components/ParticipateComponent.vue').default);
 Vue.component('favourite-component', require('./components/FavouriteComponent.vue').default);
 Vue.component('search-component', require('./components/SearchComponent.vue').default);
+Vue.component('meteo-component', require('./components/MeteoComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,9 +35,10 @@ import Vue from 'vue'
 import ParticipateComponent from './components/ParticipateComponent'
 import FavouriteComponent from './components/FavouriteComponent'
 import SearchComponent from './components/SearchComponent'
+import MeteoComponent from './components/MeteoComponent'
 const app = new Vue({
     el: '#app',
-    components:{ParticipateComponent,FavouriteComponent,SearchComponent},
+    components:{ParticipateComponent,FavouriteComponent,SearchComponent,MeteoComponent},
     
 
 });
