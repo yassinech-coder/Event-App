@@ -30,6 +30,7 @@ class EventFactory extends Factory
             'location' => $this->faker->address,
             'date' => $this->faker->DateTime,
             'time' => $this->faker->Time( 'H:i'),
+            'seats' => $this->faker->numberBetween($min = 10, $max = 1000),
             'price' => $this->faker->numberBetween($min = 10, $max = 100),
           
         ];

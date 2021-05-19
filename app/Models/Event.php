@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','title','category_id','location','date','time','price','description','picture'];
+    protected $fillable = ['user_id','title','category_id','location','date','time','price','seats','description','picture'];
  
 
     public function getRouteKeyName()

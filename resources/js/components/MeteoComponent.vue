@@ -11,7 +11,7 @@
                       margin: 1em;"
     >
         <div class="weather loading">
-            <br />
+           
             <h2 class="city">Weather in {{ location }}</h2>
             <h1 class="temp">{{data.current.temp_c}} °C</h1>
             <div class="flex">

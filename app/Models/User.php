@@ -23,6 +23,11 @@ class User extends Authenticatable
         'provider_id',
         'password',
         'user_type',
+        'banned_until',
+    ];
+
+    protected $dates = [
+        'banned_until'
     ];
 
     /**

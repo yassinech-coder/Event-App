@@ -39,7 +39,7 @@
                                                 <td>{{ $user->profile->phone_number }} </td>
 
                                                 <td>
-                                                    <i class="far fa-trash-alt" style="font-size: 125%"
+                                                    <i class="far fa-trash-alt" style="font-size: 125%;color:#28a745"
                                                         onclick="handleDelete('{{$participant->id}}','{{$user->id}}')"></i>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="deleteModal{{$participant->id}}{{$user->id}}" tabindex="-1" role="dialog"

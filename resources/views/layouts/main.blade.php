@@ -16,6 +16,7 @@
 </head>
 <body>
 @include('../parts.nav')
+<br>
 @yield('content')
 
     @include('../parts.footer')

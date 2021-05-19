@@ -136,7 +136,7 @@ a {
     background: #28a745; }
 
 .site-footer {
-  padding: 4em 0;
+  padding: 2em 0;
   background: #0d0d0d;
   color: rgba(255, 255, 255, 0.5); }
   .site-footer .footer-heading {
@@ -212,7 +212,7 @@ a {
 
 /* Navbar */
 .site-navbar-wrap {
-  background: #fff !important;
+  background: #d4fad4 !important;
   position: fixed;
   z-index: 99;
   width: 100%;
@@ -243,7 +243,7 @@ a {
   margin-bottom: 0px;
   width: 100%;
   border-bottom: none;
-  background: #fff !important; }
+  background: #d4fad4 !important; }
   .site-navbar .site-logo {
     font-weight: 200; }
     .site-navbar .site-logo a {

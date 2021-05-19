@@ -50,6 +50,20 @@
                                                         href="{{ route('home') }}">{{ __('Favourites') }}</a>
                                                 @endif
                                             </li>
+                                            @unless (auth()->user()->unreadNotifications->isEmpty())
+                            <li class="nav-item dropdown">@if(Auth::user()->user_type=='user')
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span class="badge badge-warning">{{ auth()->user()->unreadNotifications->count() }}</span> Notification(s) <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                             @foreach (auth()->user()->unreadNotifications as $unreadNotification)
+                            <a href="" class="dropdown-item">{{ $unreadNotification->data['name'] }} Reply To Your  Comment </a>
+                            @endforeach
+                            </div>
+
+                            @endif</li>
+                           @endunless
                                             <li>
                                                 @if (Auth::user()->user_type == 'organizer')
                                                     <a class="dropdown-item"
@@ -120,7 +134,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    @if (session('message'))
+                    <div class="alert alert-danger">{{ session('message') }}</div>
+                @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group row">

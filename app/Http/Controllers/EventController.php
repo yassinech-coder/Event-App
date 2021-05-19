@@ -12,6 +12,8 @@ use App\Http\UploadedFile;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Mail\ParticipateEvent;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
@@ -47,7 +49,7 @@ class EventController extends Controller
           $unique = $collection->unique('id');
           $eventRecommendations = $unique->values()->first();
 
-          
+
 
           return view('events.show')->with(compact('event', 'eventRecommendations'));
      }
@@ -84,10 +86,11 @@ class EventController extends Controller
                'date' => request('date'),
                'time' => request('time'),
                'price' => request('price'),
+               'seats' => request('seats'),
                'description' => request('description'),
                'picture' => $filename,
           ]);
-          Log::info('ppp');
+
           return redirect()->back()->with('message', 'Event Created Successfully !');
      }
 
@@ -111,7 +114,25 @@ class EventController extends Controller
      {
           $eventId = Event::find($id);
           $eventId->users()->attach(auth()->user()->id);
-          return redirect()->back()->with('message', 'Participated Successfully!');
+
+          $homeUrl = url('/');
+          $eventId = $request->get('event_id');
+          $eventTitle = $request->get('event_title');
+
+          $eventUrl = $homeUrl . '/' . 'events/' . $eventId . '/' . $eventTitle;
+          $data = array(
+
+               'friend_name' => $request->get('friend_name'),
+               'eventUrl' => $eventUrl,
+               'event_title' => $eventTitle
+
+          );
+
+          $emailTo = $request->get('friend_email');
+
+          Mail::to($emailTo)->send(new ParticipateEvent($data));
+
+          return redirect()->back()->with('message', 'Participated! , Check Your Email ' . $emailTo);
      }
 
      public function participant()
@@ -143,7 +164,7 @@ class EventController extends Controller
                     ->orWhere('location', $location)
                     ->orWhere('date', $date)
                     ->simplePaginate(5);
-               Log::info($events);
+
 
                return view('events.allevents')->with(compact('events'));
           } else {
@@ -167,8 +188,8 @@ class EventController extends Controller
      }
 
      public function showFromNotification($id, Event $event, DatabaseNotification $notification)
-     {      
+     {
           $notification->markAsRead();
-         return $this->show($id,$event);      
+          return $this->show($id, $event);
      }
 }

@@ -38093,8 +38093,6 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "weather loading" }, [
-        _c("br"),
-        _vm._v(" "),
         _c("h2", { staticClass: "city" }, [
           _vm._v("Weather in " + _vm._s(_vm.location))
         ]),

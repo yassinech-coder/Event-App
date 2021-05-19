@@ -17,9 +17,10 @@
             
                 <div class="p-4 mb-3 bg-white">
                   <h3 class="h5 text-black mb-3">Dashboard List</h3>
-                  <a href="">Statistic</a>
-                  <br><a href="">Events</a>
-                  <br><a href="{{route('dash.show')}}">Users</a>
+                  <a href="{{ route('dash.index') }}">Statistic</a>
+                  <br><a href="{{ route('dash.show') }}">Users</a>
+                  <br><a href="{{ route('dash.show2') }}">Categories</a>
+                  
                 </div>
               </div>
 

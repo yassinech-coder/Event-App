@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Comment;
 use App\Notifications\NewCommentPosted;
+use App\Notifications\NewReplyAdded;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 class CommentController extends Controller
@@ -28,7 +29,7 @@ class CommentController extends Controller
         return redirect()->route('events.show', [$event->id, $event->title]);
     }
 
-    public function storeCommentReply(Comment $comment)
+    public function storeCommentReply(Comment $comment, Event $event)
     {
         request()->validate([
             'replyComment' => 'required|min:3'
@@ -39,6 +40,7 @@ class CommentController extends Controller
         $commentReply->user_id = auth()->user()->id;
 
         $comment->comments()->save($commentReply);
+        $comment->user->notify(new NewReplyAdded($comment, auth()->user()));
 
         return redirect()->back();
     }

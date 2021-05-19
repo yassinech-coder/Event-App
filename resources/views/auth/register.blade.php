@@ -18,7 +18,7 @@
 
           <div class="col-md-10 ">
           
-            <form method="POST" action="{{ route('register') }}" class="p-5 bg-white">
+            <form method="POST" action="{{ route('user.register') }}" class="p-5 bg-white">
                         @csrf
 
                         <input type="hidden" value="user" name="user_type">

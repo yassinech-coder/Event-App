@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\User;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use App\Models\Profile;
+use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -67,15 +67,32 @@ class UserController extends Controller
     $name = $request->get('name');
     $user_type = $request->input('user_type');
 
-    if ($name || $user_type) {
-      $users = DB::table('users')->where('name', $name)
-        ->orWhere('user_type', $user_type)
-        ->paginate(5);
+    if ($name) {
+      $users = DB::table('users')->where('name', 'LIKE', '%' . $name . '%')
+        ->paginate(10);
       return view('admin.show')->with(compact('users'));
     }
+    if ($user_type) {
+      $users = DB::table('users')->where('user_type', $user_type)
+        ->simplePaginate(10);
+
+      return view('admin.show')->with(compact('users'));
+    } else {
+      $users = ModelsUser::latest()->simplePaginate(10);
+      return view('admin.show')->with(compact('users'));
+ }
+
 
 
     $users =  DB::table('users')->where('name', '!=', 'admin')->get();
     return view('admin.show')->with(compact('users'));
   }
+
+  public function update(Request $request, $id)
+     {
+          $user = ModelsUser::findOrFail($id);
+          $user->update(['banned_until'=>request('banned_until')]);
+
+          return redirect()->back()->with('message', 'User Successfully Suspended!');
+     }
 }

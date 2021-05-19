@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mail;
 use App\Mail\SendEvent;
+use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {

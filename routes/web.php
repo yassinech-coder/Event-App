@@ -38,7 +38,7 @@ Route::post('users/profile/avatar', 'App\Http\Controllers\UserController@avatar'
 Route::view('organizer/register', 'auth.organizer-register')->name('organizer.register');
 Route::post('organizer/register', 'App\Http\Controllers\OrganizerRegisterController@organizerRegister')
     ->name('org.register');
-Route::post('register', 'App\Http\Controllers\RegisterController@create')->name('user.register');
+Route::post('user/register', 'App\Http\Controllers\RegisterController@create')->name('user.register');
 
 Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
@@ -62,7 +62,15 @@ Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->midd
 Route::post('/comments/{event}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
 
 Route::get('/dashboard/users', 'App\Http\Controllers\UserController@getuser')->name('dash.show');
+Route::get('/dashboard/categories', 'App\Http\Controllers\CategoryController@getcategory')->name('dash.show2');
 
 Route::post('/commentReply/{comment}', 'App\Http\Controllers\CommentController@storeCommentReply')->name('comments.storeReply');
 Route::post('/event/mail', 'App\Http\Controllers\EmailController@send')->name('mail');
 Route::get('/showFromNotification/{id}/{event}/{notification}', 'App\Http\Controllers\EventController@showFromNotification')->name('events.showFromNotification');
+
+Route::post('/categories/create', 'App\Http\Controllers\CategoryController@store')->name('category.store');
+Route::post('/categories/{id}/edit', 'App\Http\Controllers\CategoryController@update')->name('category.update');
+Route::get('/categories/{id}/delete', 'App\Http\Controllers\CategoryController@delete')->name('category.delete');
+
+Route::post('/users/{id}/block', 'App\Http\Controllers\UserController@update')->name('user.block');
+
