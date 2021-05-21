@@ -38,7 +38,7 @@ Route::post('users/profile/avatar', 'App\Http\Controllers\UserController@avatar'
 Route::view('organizer/register', 'auth.organizer-register')->name('organizer.register');
 Route::post('organizer/register', 'App\Http\Controllers\OrganizerRegisterController@organizerRegister')
     ->name('org.register');
-Route::post('user/register', 'App\Http\Controllers\RegisterController@create')->name('user.register');
+Route::post('register', 'App\Http\Controllers\RegisterController@create')->name('user.register');
 
 Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
