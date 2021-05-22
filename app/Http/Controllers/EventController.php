@@ -13,6 +13,7 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Mail\ParticipateEvent;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
@@ -120,14 +121,20 @@ class EventController extends Controller
           $eventTitle = $request->get('event_title');
 
           $eventUrl = $homeUrl . '/' . 'events/' . $eventId . '/' . $eventTitle;
+          $eventUser = DB::table('event_user')->where('event_id', $eventId)->where('user_id', auth()->user()->id)->first();
+          $code = 'Y20S7'. strval($eventUser->event_id) . strval($eventUser->user_id);
           $data = array(
 
                'friend_name' => $request->get('friend_name'),
                'eventUrl' => $eventUrl,
-               'event_title' => $eventTitle
+               'event_title' => $eventTitle,
+               'code' => $code,
 
           );
 
+          $event = Event::find($id);
+          $event->seats--;
+          $event->save();
           $emailTo = $request->get('friend_email');
 
           Mail::to($emailTo)->send(new ParticipateEvent($data));

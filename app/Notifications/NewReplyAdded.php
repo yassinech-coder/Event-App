@@ -15,16 +15,18 @@ class NewReplyAdded extends Notification
 
     protected $user;
     protected $comment;
+    protected $event;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Comment $comment,User $user)
+    public function __construct(Comment $comment,User $user,Event $event)
     {
         $this->comment = $comment;
         $this->user = $user;
+        $this->event = $event;
     }
 
     /**
@@ -48,7 +50,8 @@ class NewReplyAdded extends Notification
     public function toArray($notifiable)
     {
         return [
-            
+            'eventTitle' => $this->event->title,
+            'eventId' => $this->event->id,
             'name' => $this->user->name,
         ];
     }

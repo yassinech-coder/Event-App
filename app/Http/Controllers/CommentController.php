@@ -40,7 +40,7 @@ class CommentController extends Controller
         $commentReply->user_id = auth()->user()->id;
 
         $comment->comments()->save($commentReply);
-        $comment->user->notify(new NewReplyAdded($comment, auth()->user()));
+        $comment->user->notify(new NewReplyAdded($comment, auth()->user(),$event));
 
         return redirect()->back();
     }

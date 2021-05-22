@@ -74,7 +74,7 @@
                     <p class="text-center">Available Seats :{{ $event->seats }}</p>
 
                     <p>
-                        @if (empty(Auth::user()->user_type))
+                        @if (empty(Auth::user()->user_type) || $event->seats < 1)
                             <button type="submit" class="btn btn-success btn-m" style="width: 100%"
                                 disabled>Participate</button>
 
@@ -191,7 +191,7 @@
                     @auth
                         <button class="btn btn-secondary mb-3"
                             onclick="toggleReplyComment({{ $comment->id }})">Reply</button>
-                        <form action="{{ route('comments.storeReply', $comment) }}" method="POST" class="mb-3 ml-5 d-none"
+                        <form action="{{ route('comments.storeReply',[$comment ,$event]) }}" method="POST" class="mb-3 ml-5 d-none"
                             id="replyComment-{{ $comment->id }}">
                             @csrf
                             <table>

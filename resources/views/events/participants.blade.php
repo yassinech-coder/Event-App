@@ -23,10 +23,11 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th style="width: 20%">Name</th>
-                                                <th style="width: 25">E-mail</th>
-                                                <th style="width: 25%">Address</th>
+                                                <th style="width: 15%">Name</th>
+                                                <th style="width: 20%">E-mail</th>
+                                                <th style="width: 20%">Address</th>
                                                 <th style="width: 20%">Phone Number</th>
+                                                <th style="width: 15%">Code</th>
                                                 <th style="width: 10%"> </th>
                                             </tr>
                                         </thead>
@@ -37,13 +38,17 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->profile->address }}</td>
                                                 <td>{{ $user->profile->phone_number }} </td>
+                                                <td>Y20S7{{$participant->id }}{{$user->id }} </td>
+
 
                                                 <td>
                                                     <i class="far fa-trash-alt" style="font-size: 125%;color:#28a745"
-                                                        onclick="handleDelete('{{$participant->id}}','{{$user->id}}')"></i>
+                                                        onclick="handleDelete('{{ $participant->id }}','{{ $user->id }}')"></i>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="deleteModal{{$participant->id}}{{$user->id}}" tabindex="-1" role="dialog"
-                                                        aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                    <div class="modal fade"
+                                                        id="deleteModal{{ $participant->id }}{{ $user->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <form
                                                                 action="{{ route('participant.delete', [$participant->id, $user->id]) }}">
@@ -84,7 +89,7 @@
 @endsection
 @section('scripts')
     <script>
-        function handleDelete(event_id,user_id) {
+        function handleDelete(event_id, user_id) {
 
             $(`#deleteModal${event_id}${user_id}`).appendTo('body').modal('show')
 

@@ -64,7 +64,7 @@ Route::post('/comments/{event}', 'App\Http\Controllers\CommentController@store')
 Route::get('/dashboard/users', 'App\Http\Controllers\UserController@getuser')->name('dash.show');
 Route::get('/dashboard/categories', 'App\Http\Controllers\CategoryController@getcategory')->name('dash.show2');
 
-Route::post('/commentReply/{comment}', 'App\Http\Controllers\CommentController@storeCommentReply')->name('comments.storeReply');
+Route::post('/commentReply/{comment}/{event}', 'App\Http\Controllers\CommentController@storeCommentReply')->name('comments.storeReply');
 Route::post('/event/mail', 'App\Http\Controllers\EmailController@send')->name('mail');
 Route::get('/showFromNotification/{id}/{event}/{notification}', 'App\Http\Controllers\EventController@showFromNotification')->name('events.showFromNotification');
 

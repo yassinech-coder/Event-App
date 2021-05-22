@@ -2,7 +2,7 @@
 
 
 Hi {{$data['friend_name']}}, You have just participated to <strong> {{$data['event_title']}} </strong> !
-and this is your code!!
+and this is your code : {{$data['code']}}
 
 @component('mail::button', ['url' => $data['eventUrl']])
 View Event

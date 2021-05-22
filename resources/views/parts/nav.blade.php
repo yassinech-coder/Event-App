@@ -58,7 +58,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                              @foreach (auth()->user()->unreadNotifications as $unreadNotification)
-                            <a href="" class="dropdown-item">{{ $unreadNotification->data['name'] }} Reply To Your  Comment </a>
+                            <a href="{{ route('events.showFromNotification', ['id' => $unreadNotification->data['eventId'],'event' => $unreadNotification->data['eventTitle'], 'notification' => $unreadNotification->id])}}" class="dropdown-item">{{ $unreadNotification->data['name'] }} Reply To Your  Comment </a>
                             @endforeach
                             </div>
 

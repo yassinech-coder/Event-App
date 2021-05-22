@@ -57,8 +57,12 @@ class UserController extends Controller
 
   public function delete($event_id, $user_id)
   {
+
     DB::table('event_user')->where('event_id', $event_id)
       ->where('user_id', $user_id)->delete();
+      $event = Event::find($event_id);
+      $event->seats++;
+      $event->save();
 
     return redirect()->back()->with('message', 'Participant Deleted!');
   }

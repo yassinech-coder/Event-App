@@ -1,13 +1,15 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Charts;
 
 use App\Models\Event;
+use App\Models\User;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DashboardChart extends BaseChart
 {
@@ -18,10 +20,23 @@ class DashboardChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $event = Event::all()->count();
+        $event = Event::all();
+
+        $data = array_replace(array_fill_keys(range(0, 11), 0), $event->groupBy('created_at.month')
+            ->map(function ($event) {
+                return count($event);
+            })->toArray());
+        array_shift($data);
+        $user = User::all();
+
+        $data2 = array_replace(array_fill_keys(range(0, 11), 0), $user->groupBy('created_at.month')
+            ->map(function ($user) {
+                return count($user);
+            })->toArray());
+        array_shift($data2);
         return Chartisan::build()
             ->labels(['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
-            ->dataset('Event created', [0, 0, 2, 7, 9, 8, 2, 1, 0, 0, 0, 0])
-            ->dataset('Active Users ', [0, 1, 1, 2, 5, 8, 3, 2, 3, 1, 8, 10]);
+            ->dataset('Event created', $data)
+            ->dataset('Active Users ', $data2 );
     }
 }
