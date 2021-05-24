@@ -63,13 +63,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create()
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'user_type' => $data['user_type'],
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
+            'user_type' => request('user_type'),
         ]);
 
         Profile::create([
@@ -79,6 +79,6 @@ class RegisterController extends Controller
          'dob'=>request('dob') ,
 
         ]);
-        return $user ;
+        return redirect()->to('/');
     }
 }

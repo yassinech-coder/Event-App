@@ -9,6 +9,7 @@
         <table class="table">
             <br><br>
             <h2 class="mb-6 h3">{{$categoryName->name}}</h2>
+            <br>
             <thead>
             </thead>
             <tbody>
@@ -32,7 +33,7 @@
                    
             </tbody>
         </table>
-        <br>
+        <br><br><br><br>
         </div>
         <br><br>
         <div style="text-align: center"> 

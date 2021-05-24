@@ -15,7 +15,7 @@
                 <div class="col-md-6 mb-3 mb-md-0">
                   <div class="input-wrap">
                     <span class="icon icon-room"></span>
-                  <input type="text" name="location" class="form-control form-control-block search-input  border-0 px-4" id="autocomplete" placeholder="city, province or region" onFocus="geolocate()">
+                  <input type="text" name="location" class="form-control form-control-block search-input  border-0 px-4" placeholder="city, province or region">
                   </div>
                 </div>
               </div>
