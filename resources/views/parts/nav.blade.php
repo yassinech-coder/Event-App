@@ -50,20 +50,29 @@
                                                         href="{{ route('home') }}">{{ __('Favourites') }}</a>
                                                 @endif
                                             </li>
-                                            @unless (auth()->user()->unreadNotifications->isEmpty())
-                            <li class="nav-item dropdown">@if(Auth::user()->user_type=='user')
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <span class="badge badge-warning">{{ auth()->user()->unreadNotifications->count() }}</span> Notification(s) <span class="caret"></span>
-                            </a>
+                                            @unless(auth()->user()->unreadNotifications->isEmpty())
+                                                <li class="nav-item dropdown">
+                                                    @if (Auth::user()->user_type == 'user')
+                                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                            role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false" v-pre>
+                                                            <span
+                                                                class="badge badge-warning">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                                            Notification(s) <span class="caret"></span>
+                                                        </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                             @foreach (auth()->user()->unreadNotifications as $unreadNotification)
-                            <a href="{{ route('events.showFromNotification', ['id' => $unreadNotification->data['eventId'],'event' => $unreadNotification->data['eventTitle'], 'notification' => $unreadNotification->id])}}" class="dropdown-item">{{ $unreadNotification->data['name'] }} Reply To Your  Comment </a>
-                            @endforeach
-                            </div>
+                                                        <div class="dropdown-menu dropdown-menu-right"
+                                                            aria-labelledby="navbarDropdown">
+                                                            @foreach (auth()->user()->unreadNotifications as $unreadNotification)
+                                                                <a href="{{ route('events.showFromNotification', ['id' => $unreadNotification->data['eventId'], 'event' => $unreadNotification->data['eventTitle'], 'notification' => $unreadNotification->id]) }}"
+                                                                    class="dropdown-item">{{ $unreadNotification->data['name'] }}
+                                                                    Reply To Your Comment </a>
+                                                            @endforeach
+                                                        </div>
 
-                            @endif</li>
-                           @endunless
+                                                    @endif
+                                                </li>
+                                            @endunless
                                             <li>
                                                 @if (Auth::user()->user_type == 'organizer')
                                                     <a class="dropdown-item"
@@ -77,20 +86,30 @@
                                                         href="{{ route('participant') }}">{{ __('Participants') }}</a>
                                                 @endif
                                             </li>
-                                            @unless (auth()->user()->unreadNotifications->isEmpty())
-                            <li class="nav-item dropdown">@if(Auth::user()->user_type=='organizer')
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <span class="badge badge-warning">{{ auth()->user()->unreadNotifications->count() }}</span> Notification(s) <span class="caret"></span>
-                            </a>
+                                            @unless(auth()->user()->unreadNotifications->isEmpty())
+                                                <li class="nav-item dropdown">
+                                                    @if (Auth::user()->user_type == 'organizer')
+                                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                            role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false" v-pre>
+                                                            <span
+                                                                class="badge badge-warning">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                                            Notification(s) <span class="caret"></span>
+                                                        </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                             @foreach (auth()->user()->unreadNotifications as $unreadNotification)
-                            <a href="{{ route('events.showFromNotification', ['id' => $unreadNotification->data['eventId'],'event' => $unreadNotification->data['eventTitle'], 'notification' => $unreadNotification->id]) }}" class="dropdown-item">{{ $unreadNotification->data['name'] }} Posted A Comment On <strong>{{ $unreadNotification->data['eventTitle'] }}</strong></a>
-                            @endforeach
-                            </div>
+                                                        <div class="dropdown-menu dropdown-menu-right"
+                                                            aria-labelledby="navbarDropdown">
+                                                            @foreach (auth()->user()->unreadNotifications as $unreadNotification)
+                                                                <a href="{{ route('events.showFromNotification', ['id' => $unreadNotification->data['eventId'], 'event' => $unreadNotification->data['eventTitle'], 'notification' => $unreadNotification->id]) }}"
+                                                                    class="dropdown-item">{{ $unreadNotification->data['name'] }}
+                                                                    Posted A Comment On
+                                                                    <strong>{{ $unreadNotification->data['eventTitle'] }}</strong></a>
+                                                            @endforeach
+                                                        </div>
 
-                            @endif</li>
-                           @endunless
+                                                    @endif
+                                                </li>
+                                            @endunless
 
 
 
@@ -135,8 +154,8 @@
                 </div>
                 <div class="modal-body">
                     @if (session('message'))
-                    <div class="alert alert-danger">{{ session('message') }}</div>
-                @endif
+                        <div class="alert alert-danger">{{ session('message') }}</div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group row">

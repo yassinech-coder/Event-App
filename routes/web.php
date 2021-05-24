@@ -73,4 +73,3 @@ Route::post('/categories/{id}/edit', 'App\Http\Controllers\CategoryController@up
 Route::get('/categories/{id}/delete', 'App\Http\Controllers\CategoryController@delete')->name('category.delete');
 
 Route::post('/users/{id}/block', 'App\Http\Controllers\UserController@update')->name('user.block');
-

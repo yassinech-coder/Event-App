@@ -20,7 +20,7 @@ class EventController extends Controller
 {
      public function __construct()
      {
-          $this->middleware('organizer', ['except' => array('index', 'show', 'participate', 'allEvents', 'searchEvents')]);
+          $this->middleware('organizer', ['except' => array('index', 'show', 'participate', 'allEvents', 'searchEvents','showFromNotification')]);
      }
      public function index()
      {
